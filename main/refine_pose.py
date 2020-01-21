@@ -215,7 +215,8 @@ if __name__ == '__main__':
     def parse_args():
         parser = argparse.ArgumentParser()
         parser.add_argument('--gpu', type=str, dest='gpu_ids')
-        parser.add_argument('--test_epoch', type=str, dest='test_epoch')
+        parser.add_argument('--test_epoch', type=str, dest='test_epoch'
+            default="last_epoch")
         parser.add_argument('--image_file', type=str, help="Image file")
         args = parser.parse_args()
 
