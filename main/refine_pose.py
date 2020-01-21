@@ -181,6 +181,7 @@ def test(test_model, video):
     
     # input pose load
     input_pose = d.input_pose_load(video)
+    print(input_pose)
     """
     
     """
