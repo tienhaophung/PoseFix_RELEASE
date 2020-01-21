@@ -185,29 +185,29 @@ def test(test_model, video):
     """
     
     """
-    # job assign (multi-gpu)
-    from tfflat.mp_utils import MultiProc
-    img_start = 0
-    ranges = [0]
-    img_num = len(np.unique([i['image_id'] for i in input_pose]))
-    images_per_gpu = int(img_num / len(args.gpu_ids.split(','))) + 1
-    for run_img in range(img_num):
-        img_end = img_start + 1
-        while img_end < len(input_pose) and input_pose[img_end]['image_id'] == input_pose[img_start]['image_id']:
-            img_end += 1
-        if (run_img + 1) % images_per_gpu == 0 or (run_img + 1) == img_num:
-            ranges.append(img_end)
-        img_start = img_end
+    # # job assign (multi-gpu)
+    # from tfflat.mp_utils import MultiProc
+    # img_start = 0
+    # ranges = [0]
+    # img_num = len(np.unique([i['image_id'] for i in input_pose]))
+    # images_per_gpu = int(img_num / len(args.gpu_ids.split(','))) + 1
+    # for run_img in range(img_num):
+    #     img_end = img_start + 1
+    #     while img_end < len(input_pose) and input_pose[img_end]['image_id'] == input_pose[img_start]['image_id']:
+    #         img_end += 1
+    #     if (run_img + 1) % images_per_gpu == 0 or (run_img + 1) == img_num:
+    #         ranges.append(img_end)
+    #     img_start = img_end
 
-    def func(gpu_id):
-        cfg.set_args(args.gpu_ids.split(',')[gpu_id])
-        tester = Tester(Model(), cfg)
-        tester.load_weights(test_model)
-        range = [ranges[gpu_id], ranges[gpu_id + 1]]
-        return test_net(tester, input_pose, range, gpu_id)
+    # def func(gpu_id):
+    #     cfg.set_args(args.gpu_ids.split(',')[gpu_id])
+    #     tester = Tester(Model(), cfg)
+    #     tester.load_weights(test_model)
+    #     range = [ranges[gpu_id], ranges[gpu_id + 1]]
+    #     return test_net(tester, input_pose, range, gpu_id)
 
-    MultiGPUFunc = MultiProc(len(args.gpu_ids.split(',')), func)
-    result = MultiGPUFunc.work()
+    # MultiGPUFunc = MultiProc(len(args.gpu_ids.split(',')), func)
+    # result = MultiGPUFunc.work()
 
     # # evaluation
     # d.evaluation(result, annot, cfg.result_dir, cfg.testset)
