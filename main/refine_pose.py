@@ -180,7 +180,7 @@ def test(test_model, video):
     # annot = d.load_annot(cfg.testset)
     
     # input pose load
-    input_pose = d.input_pose_load()
+    input_pose = d.input_pose_load(video)
     """
     
     """
