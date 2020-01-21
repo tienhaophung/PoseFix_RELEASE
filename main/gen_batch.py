@@ -340,7 +340,12 @@ def generate_batch(d, stage='train'):
     if img is None:
         print('cannot read ' + os.path.join(cfg.img_path, d['imgpath']))
         assert 0
-
+    
+    """
+    if cap == None:
+        cap = cv2.VideoCapture(cv2.samples.findFileOrKeep(os.path.join(cfg.img_path, d['imgpath'])))
+    img = cap.read()
+    """
     bbox = np.array(d['bbox']).astype(np.float32)
     
     x, y, w, h = bbox

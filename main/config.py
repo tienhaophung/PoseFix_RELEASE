@@ -92,7 +92,7 @@ make_dir(cfg.vis_dir)
 make_dir(cfg.log_dir)
 make_dir(cfg.result_dir)
 
-from dataset import dbcfg
+from custom_loading import dbcfg
 cfg.num_kps = dbcfg.num_kps
 cfg.kps_names = dbcfg.kps_names
 cfg.kps_lines = dbcfg.kps_lines

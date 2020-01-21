@@ -1,5 +1,6 @@
 # --------------------------------------------------------
-# Copyright (c) Microsoft
+# Pose.gluon
+# Copyright (c) 2018-present Microsoft
 # Licensed under The MIT License [see LICENSE for details]
 # Modified from py-faster-rcnn (https://github.com/rbgirshick/py-faster-rcnn)
 # --------------------------------------------------------
@@ -50,7 +51,7 @@ def locate_cuda():
     for k, v in cudaconfig.items():
         if not os.path.exists(v):
             raise EnvironmentError('The CUDA %s path could not be located in %s' % (k, v))
-    print("Done")
+
     return cudaconfig
 CUDA = locate_cuda()
 
