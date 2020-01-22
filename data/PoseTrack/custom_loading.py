@@ -128,7 +128,7 @@ class Dataset(object):
         # imgname = self.imgid_to_imgname(annot, img_id, db_set)
         for i in range(len(input_pose)):
             # input_pose[i]['imgpath'] = imgname[i]
-            input_pose[i]['image'] = image_path
+            input_pose[i]['imgpath'] = image_path
 
         # bbox generate
         for i in range(len(input_pose)):
